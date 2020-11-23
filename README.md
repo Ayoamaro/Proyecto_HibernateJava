@@ -1,4 +1,4 @@
-# Proyecto Hibernate Fútbol Java
+# Proyecto Hibernate Java
 
 Crear con hibérnate un proyecto en el que se mapeará la siguiente base de datos llamada **futboldb**.
 
