@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Proyecto Hibernate Fútbol Java
 
 Crear con hibérnate un proyecto en el que se mapeará la siguiente base de datos llamada **futboldb**.
@@ -7,7 +6,7 @@ Tener en cuenta que los nombres de las tablas y de los campos, así como los tip
 
 Entre la tabla **equipos** y **equiposObservaciones** la relación es uno a uno. Podrá ocurrir que un equipo no tenga su observación asociada. El resto de relaciones son uno a muchos y de muchos a unos.
 
-![](C:\Users\Ayoze\eclipse-workspace\Proyecto_HibernateJava\docs\images\diagrama.png)
+![](https://github.com/Ayoamaro/Proyecto_HibernateJava/blob/main/docs/images/diagrama.png?raw=true)
 
 Añade al proyecto una opción con las inserciones de registros de todas las tablas.
 
@@ -34,4 +33,3 @@ Realizar las siguientes consultas:
 
 - Visualizar todos los equipos con todos sus datos incluyendo las observaciones del que tenga.
 - Visualizar todos los equipos y sus contratos, incluyendo los datos de los futbolistas y la liga en los que están esos equipos.
->>>>>>> 82f41ee782b67816ae79b7967859603824cc46bc
