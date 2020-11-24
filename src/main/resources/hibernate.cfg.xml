@@ -5,14 +5,14 @@
 <hibernate-configuration>
 <session-factory>
 <!-- Configuración de conexión a la base de datos -->
-<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-<property name="connection.url">jdbc:mysql://localhost/futboldb</property>
+<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+<property name="connection.url">jdbc:mysql://localhost:3306/futboldb</property>
 <property name="connection.username">root</property>
 <property name="connection.password"></property>
 <!-- Pool de conexiones JDBC (se usa la que viene por defecto) -->
 <property name="connection.pool_size">1</property>
 <!-- Dialecto SQL -->
-<property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
+<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 <!-- Muestra en la consola todas las consultas SQL ejecutadas -->
 <property name="show_sql">false</property>
 <!--Valores Posibles 
@@ -25,10 +25,11 @@ create-drop: create the schema as in create above, but also drop the schema at t
 <!-- Mapea las siguientes clases anotadas si trabajásemos con mapeo XML en lugar de class
 pondríamos resource -->
 
-<mapping class="hibernate.Liga" /> 
-<mapping class="hibernate.Futbolista" />
-<mapping class="hibernate.Equipo" />
-<mapping class="hibernate.Contrato" /> 
+<mapping class="aed.proyecto.hibernate.Ligas" /> 
+<mapping class="aed.proyecto.hibernate.Futbolistas" />
+<mapping class="aed.proyecto.hibernate.Equipos" />
+<mapping class="aed.proyecto.hibernate.EquiposObservaciones" />
+<mapping class="aed.proyecto.hibernate.Contratos" /> 
 <!--
 
 <mapping class="futbolistas" /> 
