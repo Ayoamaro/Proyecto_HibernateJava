@@ -26,11 +26,11 @@
 		<!-- Mapea las siguientes clases anotadas si trabajásemos con mapeo XML en lugar de class
 		pondríamos resource -->
 
-		<mapping class="aed.proyecto.hibernate.Ligas" /> 
-		<mapping class="aed.proyecto.hibernate.Futbolistas" />
-		<mapping class="aed.proyecto.hibernate.Equipos" />
-		<mapping class="aed.proyecto.hibernate.EquiposObservaciones" />
-		<mapping class="aed.proyecto.hibernate.Contratos" /> 
+		<mapping class="aed.proyecto.hibernate.tablas.Ligas" /> 
+		<mapping class="aed.proyecto.hibernate.tablas.Futbolistas" />
+		<mapping class="aed.proyecto.hibernate.tablas.Equipos" />
+		<mapping class="aed.proyecto.hibernate.tablas.EquiposObservaciones" />
+		<mapping class="aed.proyecto.hibernate.tablas.Contratos" /> 
 
 		<!--la siguiente linea solo en el caso de usar mapeo con ficheros xml -->
 		<!-- <mapping resource="Persona.hbm.xml"/> -->

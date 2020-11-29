@@ -1,4 +1,4 @@
-package aed.proyecto.hibernate;
+package aed.proyecto.hibernate.tablas;
 
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;

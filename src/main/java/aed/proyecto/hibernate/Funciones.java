@@ -8,6 +8,12 @@ import java.util.Scanner;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import aed.proyecto.hibernate.tablas.Contratos;
+import aed.proyecto.hibernate.tablas.Equipos;
+import aed.proyecto.hibernate.tablas.EquiposObservaciones;
+import aed.proyecto.hibernate.tablas.Futbolistas;
+import aed.proyecto.hibernate.tablas.Ligas;
+
 /**
  * @author Ayoze Amaro
  *
