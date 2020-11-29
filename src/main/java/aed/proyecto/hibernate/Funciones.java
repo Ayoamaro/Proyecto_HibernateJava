@@ -248,35 +248,6 @@ public class Funciones {
 	}
 	
 	/*
-	 * --- MOSTRAR CONTRATOS ---
-	 * Mostrado de todos los contratos de la base de datos
-	 */
-	public static void listarContratos() {
-		
-		Session sesion = HibernateUtil.getSessionFactory().openSession();
-		Query q = sesion.createQuery("from Contratos");
-		
-		System.out.println("");
-		System.out.println("-------------------------");
-		System.out.println("LISTADO DE LOS CONTRATOS");
-		System.out.println("");
-		try {
-			List<Contratos> listaContratos = q.getResultList();
-			for (Contratos contrato : listaContratos) {
-				System.out.println(contrato.toString());
-			}
-		} catch (Exception e) {
-			sesion.getTransaction().rollback();
-			System.out.println(e.getMessage());
-		}
-		
-		System.out.println("");
-		System.out.println("-------------------------");
-		System.out.println("");
-		sesion.close();
-	}
-	
-	/*
 	 * --- MODIFICACIÓN EQUIPO ---
 	 * Modificación de un equipo existente en la base de datos
 	 */
@@ -401,6 +372,35 @@ public class Funciones {
 			List<Equipos> listaEquipos = q.getResultList();
 			for (Equipos equipo : listaEquipos) {
 				System.out.println(equipo.toString());
+			}
+		} catch (Exception e) {
+			sesion.getTransaction().rollback();
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("");
+		System.out.println("-------------------------");
+		System.out.println("");
+		sesion.close();
+	}
+	
+	/*
+	 * --- MOSTRAR CONTRATOS ---
+	 * Mostrado de todos los contratos de la base de datos
+	 */
+	public static void listarContratos() {
+		
+		Session sesion = HibernateUtil.getSessionFactory().openSession();
+		Query q = sesion.createQuery("from Contratos");
+		
+		System.out.println("");
+		System.out.println("-------------------------");
+		System.out.println("LISTADO DE LOS CONTRATOS");
+		System.out.println("");
+		try {
+			List<Contratos> listaContratos = q.getResultList();
+			for (Contratos contrato : listaContratos) {
+				System.out.println(contrato.toString());
 			}
 		} catch (Exception e) {
 			sesion.getTransaction().rollback();
