@@ -139,8 +139,6 @@ public class Funciones {
 		sesion.close();
 	}
 
-	
-	
 	/*
 	 * --- INSERTAR LIGA ---
 	 * Insercción de una nueva liga en la base de datos
