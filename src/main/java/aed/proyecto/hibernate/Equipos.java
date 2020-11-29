@@ -1,55 +1,50 @@
 package aed.proyecto.hibernate;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.*;
 
+/**
+ * @author Ayoze Amaro
+ *
+ */
 @Entity
 @Table(name = "equipos")
 public class Equipos {
 
 	@Id
-	@Column(columnDefinition = "integer")
+	@Column ( columnDefinition= "integer")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int codEquipo;
-
-	@Column(columnDefinition = "varchar(40)")
-	private String nomEquipo;
+	Integer codEquipo;
 	
-	@Column ( columnDefinition= "bit")
-	private boolean internacional;
+	@Column ( columnDefinition= "varchar(40)")
+	String nomEquipo;
 	
-	@Column ( columnDefinition = "varchar(60)")
-	private String localidad;
-	@OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn (name="codEquipo")
-	private EquiposObservaciones equiposobservacion;
-	
-	@OneToMany (cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="equipo", orphanRemoval = true )
-	List<Contratos> contrato = new ArrayList<Contratos>(); 
-	
-	@ManyToOne (cascade={CascadeType.PERSIST,CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	@ManyToOne(cascade= {CascadeType.PERSIST}, fetch=FetchType.EAGER)
 	@JoinColumn(name="codLiga")
-	private Ligas liga;
-
-	@Override
-	public String toString() {
-		return "Equipo:\ncodEquipo=" + codEquipo + ",\nnomEquipo=" + nomEquipo + ", \ninternacional=" + internacional
-				+ ", \nlocalidad=" + localidad + ", \nliga=" + liga.getNomLiga();
-	}
-
-	public Equipos() {
-		super();
-	}
-
-	public Equipos(String nomEquipo, boolean internacional, String localidad, Ligas liga) {
-		super();
+	private Ligas ligaXXX;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="equipoXXX")
+	private List<Contratos> contratos = new ArrayList<Contratos>();
+	
+	@OneToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@PrimaryKeyJoinColumn (name = "codEquipo") 
+	private EquiposObservaciones equipoObservacionXXX;
+	
+	@Column ( columnDefinition= "varchar(60)")
+	String localidad;
+	
+	@Column ( columnDefinition= "BIT")
+	boolean internacional;
+	
+	public Equipos() { }
+	
+	public Equipos(String nomEquipo, Ligas ligaXXX, List<Contratos> contratos, String localidad, boolean internacional) {
 		this.nomEquipo = nomEquipo;
-		this.internacional = internacional;
+		this.ligaXXX = ligaXXX;
+		this.contratos = contratos;
 		this.localidad = localidad;
-		this.liga = liga;
+		this.internacional = internacional;
 	}
 
 	public int getCodEquipo() {
@@ -68,14 +63,6 @@ public class Equipos {
 		this.nomEquipo = nomEquipo;
 	}
 
-	public boolean isInternacional() {
-		return internacional;
-	}
-
-	public void setInternacional(boolean internacional) {
-		this.internacional = internacional;
-	}
-
 	public String getLocalidad() {
 		return localidad;
 	}
@@ -84,27 +71,44 @@ public class Equipos {
 		this.localidad = localidad;
 	}
 
-	public EquiposObservaciones getEquiposobservacion() {
-		return equiposobservacion;
+	public boolean isInternacional() {
+		return internacional;
 	}
 
-	public void setEquiposobservacion(EquiposObservaciones equiposobservacion) {
-		this.equiposobservacion = equiposobservacion;
+	public void setInternacional(boolean internacional) {
+		this.internacional = internacional;
 	}
 
-	public List<Contratos> getContrato() {
-		return contrato;
+	public Ligas getLigaXXX() {
+		return ligaXXX;
 	}
 
-	public void setContrato(List<Contratos> contrato) {
-		this.contrato = contrato;
+	public void setLigaXXX(Ligas ligaXXX) {
+		this.ligaXXX = ligaXXX;
 	}
 
-	public Ligas getLiga() {
-		return liga;
+	public List<Contratos> getContratos() {
+		return contratos;
 	}
 
-	public void setLiga(Ligas liga) {
-		this.liga = liga;
+	public void setContratos(List<Contratos> contratos) {
+		this.contratos = contratos;
+	}
+	
+	public EquiposObservaciones getEquipoObservacionXXX() {
+		return equipoObservacionXXX;
+	}
+
+	public void setEquipoObservacionXXX(EquiposObservaciones equipoObservacionXXX) {
+		this.equipoObservacionXXX = equipoObservacionXXX;
+	}
+
+	public void setCodEquipo(Integer codEquipo) {
+		this.codEquipo = codEquipo;
+	}
+	
+	@Override
+	public String toString() {
+		return getCodEquipo() + " | " + getNomEquipo() + " | " + getLigaXXX().getNomLiga() + " | " + getLocalidad() + " | " + isInternacional();
 	}
 }

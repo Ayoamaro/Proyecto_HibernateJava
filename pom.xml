@@ -10,7 +10,6 @@
 	<properties>
 		<maven.compiler.target>14</maven.compiler.target>
 		<maven.compiler.source>14</maven.compiler.source>
-		<exec.mainClass>aed.proyecto.hibernate.Main</exec.mainClass>
 	</properties>
   
  	<dependencies>

@@ -1,56 +1,46 @@
 package aed.proyecto.hibernate;
 
-
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.persistence.*;
 
+/**
+ * @author Ayoze Amaro
+ *
+ */
 @Entity
 @Table(name = "contratos")
 public class Contratos {
+	
 	@Id
-	@Column(columnDefinition = "integer")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int codContrato;
-	
-	@ManyToOne (cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "int(11)")
+	private int codContrato;
+
+	@ManyToOne(cascade= {CascadeType.PERSIST}, fetch=FetchType.EAGER)
 	@JoinColumn(name = "codDNIoNIE")
-	private Futbolistas futbolista;
+	private Futbolistas futbolistaXXX;
 	
-	@ManyToOne (cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+	@ManyToOne(cascade= {CascadeType.PERSIST}, fetch=FetchType.EAGER)
 	@JoinColumn(name = "codEquipo")
-	private Equipos equipo;
-	
-	@Column (columnDefinition = "date")
-	Date fechaInicio;
-	
+	private Equipos equipoXXX;
+
 	@Column(columnDefinition = "date")
-	Date fechaFin;
+	private Date fechaInicio;
+
+	@Column(columnDefinition = "date")
+	private Date fechaFin;
+
+	@Column(columnDefinition = "int(11)")
+	private int precioAnual;
+
+	@Column(columnDefinition = "int(11)")
+	private int precioRecision;
+
+	public Contratos() { }
 	
-	@Column(columnDefinition = "integer")
-	int precioAnual;
-	
-	@Column(columnDefinition = "integer")
-	int precioRecision;
-
-	@Override
-	public String toString() {
-		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd");
-		return "Contrato codContrato=" + codContrato + ", futbolista=" + futbolista.getNombre() + ", equipo=" + equipo.getNomEquipo()
-				+ ", fechaInicio=" + dtf.format(fechaInicio) + ", fechaFin=" + dtf.format(fechaFin) + ", precioAnual=" + precioAnual
-				+ ", precioRecision=" + precioRecision;
-	}
-
-	public Contratos() {
-		super();
-	}
-
-	public Contratos(Futbolistas futbolista, Equipos equipo, Date fechaInicio,
-			Date fechaFin, int precioAnual, int precioRecision) {
-		super();
-		this.futbolista = futbolista;
-		this.equipo = equipo;
+	public Contratos(Futbolistas futbolistaXXX, Equipos equipoXXX, Date fechaInicio, Date fechaFin, int precioAnual, int precioRecision) {
+		this.futbolistaXXX = futbolistaXXX;
+		this.equipoXXX = equipoXXX;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.precioAnual = precioAnual;
@@ -63,6 +53,38 @@ public class Contratos {
 
 	public void setCodContrato(int codContrato) {
 		this.codContrato = codContrato;
+	}
+
+	public Futbolistas getFutbolistaXXX() {
+		return futbolistaXXX;
+	}
+
+	public void setFutbolistaXXX(Futbolistas futbolistaXXX) {
+		this.futbolistaXXX = futbolistaXXX;
+	}
+	
+	public Equipos getEquipoXXX() {
+		return equipoXXX;
+	}
+
+	public void setEquipoXXX(Equipos equipoXXX) {
+		this.equipoXXX = equipoXXX;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 
 	public int getPrecioAnual() {
@@ -81,35 +103,10 @@ public class Contratos {
 		this.precioRecision = precioRecision;
 	}
 
-	public Futbolistas getFutbolista() {
-		return futbolista;
-	}
-
-	public void setFutbolista(Futbolistas futbolista) {
-		this.futbolista = futbolista;
-	}
-
-	public Equipos getEquipo() {
-		return equipo;
-	}
-
-	public void setEquipo(Equipos equipo) {
-		this.equipo = equipo;
-	}
-
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+	@Override
+	public String toString() {
+		return  codContrato + " | " + futbolistaXXX.getCodDNIoNIE() + " | " + equipoXXX.getCodEquipo()
+				+ " | " + fechaInicio + " | " + fechaFin + " | " + precioAnual
+				+ " | " + precioRecision;
 	}
 }

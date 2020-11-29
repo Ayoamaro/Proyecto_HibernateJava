@@ -1,36 +1,33 @@
 package aed.proyecto.hibernate;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.*;
 
+/**
+ * @author Ayoze Amaro
+ *
+ */
 @Entity
 @Table(name = "futbolistas")
 public class Futbolistas {
+	
 	@Id
-	@Column(columnDefinition = "char(9)")
+	@Column ( columnDefinition= "char(9)")
 	String codDNIoNIE;
-	@Column(columnDefinition = "varchar(50)")
+	
+	@Column ( columnDefinition= "varchar(50)")
 	String nombre;
-	@Column(columnDefinition = "varchar(40)")
+	
+	@Column ( columnDefinition= "varchar(40)")
 	String nacionalidad;
 	
-	@OneToMany (cascade=CascadeType.ALL, fetch=FetchType.LAZY,mappedBy="futbolista", orphanRemoval = true)
-	List<Contratos> contratos = new ArrayList<Contratos>(); 
-
-	@Override
-	public String toString() {
-		return "Futbolista: codDNIoNIE=" + codDNIoNIE + ", nombre=" + nombre + ", nacionalidad=" + nacionalidad;
-	}
-
-	public Futbolistas() {
-		super();
-	}
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="futbolistaXXX")
+	private List<Contratos> contratos = new ArrayList<Contratos>();
+	
+	public Futbolistas() { }
 
 	public Futbolistas(String codDNIoNIE, String nombre, String nacionalidad) {
-		super();
 		this.codDNIoNIE = codDNIoNIE;
 		this.nombre = nombre;
 		this.nacionalidad = nacionalidad;
@@ -58,5 +55,18 @@ public class Futbolistas {
 
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
+	}
+
+	public List<Contratos> getContratos() {
+		return contratos;
+	}
+
+	public void setContratos(List<Contratos> contratos) {
+		this.contratos = contratos;
+	}
+
+	@Override
+	public String toString() {
+		return  codDNIoNIE + " | " + nombre + " | " + nacionalidad;
 	}
 }
